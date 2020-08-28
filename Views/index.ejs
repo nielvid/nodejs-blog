@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+</head>
+<body>
+ <h1>Blog Articles </h1>  
+ <a href="articles/new"><h4>New Post</h4></a>
+ <% article.forEach(item=>{ %>
+<div>
+    <a href="#"><%= item.title %></a>
+    <p> <%= item.createdAt %></p>
+   <p><%= item.body %></p>
+    
+</div>
+<% }) %>
+
+
+</body>
+</html>
