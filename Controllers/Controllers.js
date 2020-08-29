@@ -41,7 +41,7 @@ const NewForm = (req, res)=>{
     })
     article.save()
     .then (response=>
-        res.send('new blog post created')
+        res.redirect('/blog')
 )
 .catch(err=> console.log(err)
     )}
@@ -49,23 +49,39 @@ const NewForm = (req, res)=>{
         //Controller to get all blog
     const allBlog = (req, res)=>{
    
-        ArticleModel.find()
+        ArticleModel.find().sort({_id: -1})
         .then((result)=>{
-            res.send(result)
+          
+            const posts = result
+            res.render('allpost',  {Blog: posts})
         })
         .catch(err=> console.log(err))
          
-     }
+     
+    }
 
     function SingleBlog(req, res){
         const id = req.params.id
         ArticleModel.findById(id)
         .then((result)=>{
-            res.send(result)
+            const blog = result
+            res.render('single', {BlogTitle: blog.title, BlogDesc : blog.description, BlogPost: blog.message, BlogDate: blog.createdAt})
         })
         .catch(err=> console.log(err))
          
      }
+
+     function BlogTitle(req, res){
+        const title= req.params.title
+        ArticleModel.findById(title)
+        .then((result)=>{
+            const blog = result
+            res.render('single', { Blog: blog, BlogTitle: blog.title, BlogDesc : blog.description, BlogPost: blog.message, BlogDate: blog.createdAt})
+        })
+        .catch(err=> console.log(err))
+         
+     }
+
 
      //find to edit
      const EditForm = (req, res)=>{
@@ -95,6 +111,19 @@ const NewForm = (req, res)=>{
         )}
 
 
+         //find to edit
+     const Delete = (req, res)=>{
+        const id = req.params.id
+        ArticleModel.findOneAndDelete(id)
+        .then((result)=>{
+            res.json({ redirect: "/blog"})
+    
+        })
+        .catch(err=> console.log(err))
+         
+     }
+
 
     module.exports =
-    { indexPage, NewForm, allBlog, SingleBlog, CreateBlogPost, EditForm, Update}
+    { indexPage, NewForm, allBlog, SingleBlog, 
+        CreateBlogPost, EditForm, Update, BlogTitle, Delete}

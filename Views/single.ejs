@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Edit Blog Post</title>
+</head>
+<body>
+    <h1>Single Articles </h1>  
+ <a href="/newpost"><h4>New Post</h4></a>
+ <p> I want to see how it will render</p>
+    <h3><%=BlogTitle%></h3>
+    <h4><%=BlogDesc%></h4>
+    <p> <%= BlogPost%></p>
+    <p> <%= BlogDate%></p>
+
+   <a id="del" href="/blog/" data-id="<%=Blog._id%>" >Delete</a>
+
+   <script>
+       
+      let id = document.getElementById('del')
+     
+      id.addEventListener('click', Delete)
+
+      let target =  document.getElementById('del')
+    target = target.getAttribute('data-id')
+
+      const url = "/blogs/"+target
+      console.log(url)
+
+       function Delete(){
+        if(confirm('are you sure')){
+            
+                fetch(url, { method: 'DELETE'})
+           .then((response)=> response.json())
+           .then((json)=>console.log(json)
+           )
+           .catch(err => console.log(err))
+        } else{
+            window.location.reload(false);
+       }
+
+       }
+   </script>
+   
+</body>
+</html>

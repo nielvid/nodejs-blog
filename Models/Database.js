@@ -8,7 +8,8 @@ var article = new schema({
 		required: true
 	},
 	description:{
-		type: String
+		type: String,
+		required: true
 	},
 	message:{
 		type: String,
