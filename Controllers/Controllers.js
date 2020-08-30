@@ -1,4 +1,6 @@
 const  ArticleModel = require('../Models/Database');
+const  signup = require('../Models/Database');
+const Subscriber = require('../Models/Newslettter');
 
 
 
@@ -65,7 +67,7 @@ const NewForm = (req, res)=>{
         ArticleModel.findById(id)
         .then((result)=>{
             const blog = result
-            res.render('single', {BlogTitle: blog.title, BlogDesc : blog.description, BlogPost: blog.message, BlogDate: blog.createdAt})
+            res.render('single', {Blog: blog._id, BlogTitle: blog.title, BlogDesc : blog.description, BlogPost: blog.message, BlogDate: blog.createdAt})
         })
         .catch(err=> console.log(err))
          
@@ -88,7 +90,7 @@ const NewForm = (req, res)=>{
         const id = req.params.id
         ArticleModel.findById(id)
         .then((result)=>{
-            res.render('edit')
+            res.render('edit', {blog: result})
         })
         .catch(err=> console.log(err))
          
@@ -123,7 +125,19 @@ const NewForm = (req, res)=>{
          
      }
 
+     const NewsLetter = (req, res)=>{
+         const subscribe = new Subscriber({
+            
+             email: req.body.email
+         })
+         subscribe.save()
+         .then (response=>
+             res.redirect('/blog')
+     )
+     .catch(err=> console.log(err)
+         )}
+
 
     module.exports =
     { indexPage, NewForm, allBlog, SingleBlog, 
-        CreateBlogPost, EditForm, Update, BlogTitle, Delete}
+        CreateBlogPost, EditForm, Update, BlogTitle, Delete, NewsLetter}

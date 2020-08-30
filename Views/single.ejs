@@ -1,22 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <title>Edit Blog Post</title>
-</head>
-<body>
-    <h1>Single Articles </h1>  
- <a href="/newpost"><h4>New Post</h4></a>
- <p> I want to see how it will render</p>
+
+ <%-include('csshead.ejs')%>
+    <div class="container">
+        <div class="row" >
+            <div class="col-sm-8" >
+  
     <h3><%=BlogTitle%></h3>
     <h4><%=BlogDesc%></h4>
     <p> <%= BlogPost%></p>
     <p> <%= BlogDate%></p>
 
-   <a id="del" href="/blog/" data-id="<%=Blog._id%>" >Delete</a>
+    <a id="edit" href="/edit/<%=Blog._id%>" > <button class="btn btn-primary" >Edit Post</button></a>
+    <a id="del" href="/blog/" data-id="<%=Blog._id%>" > <button class="btn btn-primary" >Delete</button></a>
+   
 
+</div>
+            
+</div>
+</div>
+
+<%-include('footer.ejs')%>
    <script>
        
       let id = document.getElementById('del')
@@ -43,6 +45,8 @@
 
        }
    </script>
-   
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+       <script src="https://kit.fontawesome.com/9f5cd78fa4.js" crossorigin="anonymous"></script>
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>

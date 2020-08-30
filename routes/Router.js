@@ -12,7 +12,7 @@ const { Router } = require("express");
 
 
 
-route.get("/", Controller.indexPage)
+route.get("/articles", Controller.indexPage)
 
 route.get("/newpost", Controller.CreateBlogPost)
 
@@ -35,6 +35,8 @@ route.get("/blog", Controller.allBlog)
 
  //delete a single blog post by id
  route.delete("/blogs/:id", Controller.Delete)
+
+ route.post('/signup', Controller.NewsLetter)
 
 
 

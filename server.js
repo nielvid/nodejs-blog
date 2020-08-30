@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const route = require("./routes/Router")
 const mongoose = require('mongoose')
+const path = require('path')
 
 var url = "mongodb://localhost:27017/blog";
 mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true})
@@ -13,8 +14,11 @@ mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true})
 })
 .catch((err)=>console.log(err))
 
-//Templating engine. Im using ejs. i can decide to use pug instead
+
 app.use(express.urlencoded({extended: false}) )
+app.use(express.static(path.join(__dirname, "public",)))
+
+//Templating engine. Im using ejs. i can decide to use pug instead
 app.set("view engine", "ejs")
 
 
