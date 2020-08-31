@@ -1,0 +1,10 @@
+{
+    "debug.javascript.codelens.npmScripts": "never",
+    "debug.javascript.usePreview": false,
+    "debug.javascript.automaticallyTunnelRemoteServer": false,
+    "debug.internalConsoleOptions": "neverOpen",
+    "debug.openDebug": "neverOpen",
+    "debug.showInlineBreakpointCandidates": false,
+    "debug.showInStatusBar": "never",
+    "workbench.panel.defaultLocation": "right"
+}
