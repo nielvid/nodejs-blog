@@ -37,9 +37,7 @@ route.get("/blog", Controller.allBlog)
  route.delete("/blogs/:id", Controller.Delete)
 
  route.post('/signup', Controller.NewsLetter)
- route.get('/ode', (req, res)=>{
-     res.send('hello node')
- })
+ 
 
 
 

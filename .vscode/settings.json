@@ -5,6 +5,5 @@
     "debug.internalConsoleOptions": "neverOpen",
     "debug.openDebug": "neverOpen",
     "debug.showInlineBreakpointCandidates": false,
-    "debug.showInStatusBar": "never",
-    "workbench.panel.defaultLocation": "right"
+    "debug.showInStatusBar": "never"
 }
