@@ -20,7 +20,8 @@ route.get("/articles", Controller.indexPage)
 route.get("/newpost", Validate , Controller.CreateBlogPost)
 
  //post a new blog to the database
-route.post('/add', Controller.NewForm )
+ route.post('/add',  Validate , Controller.NewForm )
+//route.post('/add', Controller.NewForm )
 
 //get all the blogs in the database
 route.get("/blog", Controller.allBlog)

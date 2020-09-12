@@ -1,6 +1,7 @@
 const  ArticleModel = require('../Models/Database');
 const  signup = require('../Models/Database');
 const Subscriber = require('../Models/Newslettter');
+const {  validationResult } = require('express-validator');
 
 
 
@@ -67,7 +68,7 @@ const NewForm  =  (req, res) => {
         //Controller to get all blog
     const allBlog = (req, res)=>{
    
-        ArticleModel.find()
+        ArticleModel.find().sort({_id: -1})
         .then((result)=>{
           
             const posts = result
