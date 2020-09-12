@@ -1,6 +1,7 @@
 const  ArticleModel = require('../Models/Database');
 const  signup = require('../Models/Database');
 const Subscriber = require('../Models/Newslettter');
+const {  validationResult } = require('express-validator');
 
 
 
@@ -35,23 +36,39 @@ const CreateBlogPost = (req, res)=>{
  }
 
 //controller for posting new blog
-const NewForm = (req, res)=>{
-    const article = new ArticleModel({
-        title: req.body.title,
-        description: req.body.desc,
-        message: req.body.post
-    })
-    article.save()
-    .then (response=>
-        res.redirect('/blog')
-)
-.catch(err=> console.log(err)
-    )}
+const NewForm  =  (req, res) => {
+    // Finds the validation errors in this request and wraps them in an object with handy functions
+    
+    const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+
+    //res.render('new', {errors: errors})
+  
+    return res.json({ errors: errors.array() });
+  }else{
+        const article = new ArticleModel({
+            title: req.body.title,
+            description: req.body.desc,
+            message: req.body.post
+        })
+        
+        article.save()
+        .then (response=>
+           
+            res.redirect('/blog')
+            
+    )
+    .catch(err=> console.log(err)
+        )
+        req.flash('success', "New Post added")
+    }
+  }
+
 
         //Controller to get all blog
     const allBlog = (req, res)=>{
    
-        ArticleModel.find()
+        ArticleModel.find().sort({_id: -1})
         .then((result)=>{
           
             const posts = result
@@ -61,6 +78,7 @@ const NewForm = (req, res)=>{
          
      
     }
+
     /*
     function SingleBlog(req, res){
         const id = req.params.id

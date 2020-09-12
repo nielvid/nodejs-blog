@@ -7,17 +7,21 @@ const express = require("express");
 const route = express.Router();
 
 const  ArticleModel = require('../Models/Database'); //Database logics
+const Subscriber = require('../Models/Newslettter'); // Database for Newsletter
 const Controller = require('../Controllers/Controllers'); //contrilers functions for the routers
-const { Router } = require("express");
+const { Router } = require("express")
+
+const Validate = require('../Controllers/Validate');
 
 
 
 route.get("/articles", Controller.indexPage)
 
-route.get("/newpost", Controller.CreateBlogPost)
+route.get("/newpost", Validate , Controller.CreateBlogPost)
 
  //post a new blog to the database
-route.post('/add', Controller.NewForm )
+ route.post('/add',  Validate , Controller.NewForm )
+//route.post('/add', Controller.NewForm )
 
 //get all the blogs in the database
 route.get("/blog", Controller.allBlog)
