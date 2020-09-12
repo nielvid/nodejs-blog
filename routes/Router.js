@@ -23,15 +23,15 @@ route.post('/add', Controller.NewForm )
 route.get("/blog", Controller.allBlog)
 
 //get a single blog post by id
- route.get("/blog/:id", Controller.SingleBlog)
+ //route.get("/blog/:id", Controller.SingleBlog)
 
  //get a blog on title click 
  route.get("/post/:title", Controller.BlogTitle)
 
- //update a post
- route.get('/edit/:id', Controller.EditForm)
+ //edit a post
+ route.get('/edit/:id', Controller.EditPost)
 
- route.post('/update', Controller.Update)
+ route.post('/edit/:id', Controller.Update)
 
  //delete a single blog post by id
  route.delete("/blog/:id", Controller.Delete)
