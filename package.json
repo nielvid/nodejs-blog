@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "devstart": "nodemon  server.js --watch routes/Router.js"
+    "devstart": "nodemon  server.js"
   },
   "keywords": [],
   "author": "",
