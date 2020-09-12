@@ -26,7 +26,7 @@ route.get("/blog", Controller.allBlog)
  route.get("/blog/:id", Controller.SingleBlog)
 
  //get a blog on title click 
- route.get("/blog/post/:title", Controller.BlogTitle)
+ route.get("/post/:title", Controller.BlogTitle)
 
  //update a post
  route.get('/edit/:id', Controller.EditForm)
@@ -34,7 +34,7 @@ route.get("/blog", Controller.allBlog)
  route.post('/update', Controller.Update)
 
  //delete a single blog post by id
- route.delete("/blogs/:id", Controller.Delete)
+ route.delete("/blog/:id", Controller.Delete)
 
  route.post('/signup', Controller.NewsLetter)
 

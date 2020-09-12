@@ -51,7 +51,7 @@ const NewForm = (req, res)=>{
         //Controller to get all blog
     const allBlog = (req, res)=>{
    
-        ArticleModel.find().sort({_id: -1})
+        ArticleModel.find()
         .then((result)=>{
           
             const posts = result
@@ -116,7 +116,7 @@ const NewForm = (req, res)=>{
          //find to edit
      const Delete = (req, res)=>{
         const id = req.params.id
-        ArticleModel.findOneAndDelete(id)
+        ArticleModel.findByIdAndDelete({_id:id})
         .then((result)=>{
             res.json({ redirect: "/blog"})
     
