@@ -51,7 +51,7 @@ const NewForm = (req, res)=>{
         //Controller to get all blog
     const allBlog = (req, res)=>{
    
-        ArticleModel.find().sort({_id: -1})
+        ArticleModel.find()
         .then((result)=>{
           
             const posts = result
@@ -61,7 +61,7 @@ const NewForm = (req, res)=>{
          
      
     }
-
+    /*
     function SingleBlog(req, res){
         const id = req.params.id
         ArticleModel.findById(id)
@@ -72,6 +72,7 @@ const NewForm = (req, res)=>{
         .catch(err=> console.log(err))
          
      }
+        */
 
      function BlogTitle(req, res){
         const title= req.params.title
@@ -86,7 +87,7 @@ const NewForm = (req, res)=>{
 
 
      //find to edit
-     const EditForm = (req, res)=>{
+     const EditPost = (req, res)=>{
         const id = req.params.id
         ArticleModel.findById(id)
         .then((result)=>{
@@ -95,6 +96,8 @@ const NewForm = (req, res)=>{
         .catch(err=> console.log(err))
          
      }
+        
+     
 
      //update
      const Update = (req, res)=>{
@@ -104,8 +107,8 @@ const NewForm = (req, res)=>{
             message: req.body.post
         }
     
-        let id = req.params.id
-        ArticleModel.updateOne(id, article)
+        let id = {_id:req.params.id}
+        ArticleModel.update(id, article)
         .then (response=>
             res.redirect('/blog')
     )
@@ -116,7 +119,7 @@ const NewForm = (req, res)=>{
          //find to edit
      const Delete = (req, res)=>{
         const id = req.params.id
-        ArticleModel.findOneAndDelete(id)
+        ArticleModel.findByIdAndDelete({_id:id})
         .then((result)=>{
             res.json({ redirect: "/blog"})
     
@@ -139,5 +142,7 @@ const NewForm = (req, res)=>{
 
 
     module.exports =
-    { indexPage, NewForm, allBlog, SingleBlog, 
-        CreateBlogPost, EditForm, Update, BlogTitle, Delete, NewsLetter}
+    { indexPage, NewForm, allBlog, 
+        CreateBlogPost, EditPost, Update, BlogTitle, Delete, NewsLetter}
+
+        //SingleBlog, 

@@ -10,7 +10,7 @@
     <p> <%= BlogDate%></p>
 
     <a id="edit" href="/edit/<%=Blog._id%>" > <button class="btn btn-primary" >Edit Post</button></a>
-    <a id="del" href="/blog/" data-id="<%=Blog._id%>" > <button class="btn btn-primary" >Delete</button></a>
+    <a id="del" href="/blog" data-id="<%=Blog._id%>" > <button class="btn btn-primary" >Delete</button></a>
    
 
 </div>
@@ -28,7 +28,7 @@
       let target =  document.getElementById('del')
     target = target.getAttribute('data-id')
 
-      const url = "/blogs/"+target
+      const url = "/blog/"+target
       console.log(url)
 
        function Delete(){
