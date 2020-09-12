@@ -11,13 +11,13 @@ const Subscriber = require('../Models/Newslettter'); // Database for Newsletter
 const Controller = require('../Controllers/Controllers'); //contrilers functions for the routers
 const { Router } = require("express")
 
-//const Validate = require('../Controllers/Validate');
+const Validate = require('../Controllers/Validate');
 
 
 
 route.get("/articles", Controller.indexPage)
 
-route.get("/newpost", Controller.CreateBlogPost)
+route.get("/newpost", Validate , Controller.CreateBlogPost)
 
  //post a new blog to the database
 route.post('/add', Controller.NewForm )
