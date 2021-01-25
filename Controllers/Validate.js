@@ -1,5 +1,6 @@
 const { body } = require('express-validator');
 
+
  const Validate = [
     
     body('title').not().escape(),

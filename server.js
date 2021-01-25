@@ -40,7 +40,7 @@ app.use(function (req, res, next) {
 });
 
 
-//Templating engine. Im using ejs. i can decide to use pug instead
+//Templating engine is ejs. 
 app.set("view engine", "ejs")
 
 

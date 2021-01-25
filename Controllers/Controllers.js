@@ -1,6 +1,6 @@
 const  ArticleModel = require('../Models/Database');
 const  signup = require('../Models/Database');
-const Subscriber = require('../Models/Newslettter');
+const Subscriber = require('../Models/Newsletter');
 const {  validationResult } = require('express-validator');
 
 
@@ -11,7 +11,7 @@ const indexPage = (req, res)=>{
     const Articles = [{
         title: 'Guard Clauses - The best way to write',
         createdAt: new Date().toUTCString(),
-        body: "Have you always desired to wrrite great article? In this tutorial, I;m going to introduce"
+        body: "Have you always desired to write great article? In this tutorial, I;m going to introduce"
     },
     {
         title: 'Guard Clauses - The best way to write',
@@ -147,16 +147,19 @@ const NewForm  =  (req, res) => {
      }
 
      const NewsLetter = (req, res)=>{
+      
          const subscribe = new Subscriber({
             
-             email: req.body.email
+              email: req.body
          })
          subscribe.save()
          .then (response=>
              res.redirect('/blog')
      )
      .catch(err=> console.log(err)
-         )}
+         )
+         
+        }
 
 
     module.exports =

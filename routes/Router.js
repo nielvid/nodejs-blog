@@ -6,14 +6,12 @@
 const express = require("express");
 const route = express.Router();
 
-const  ArticleModel = require('../Models/Database'); //Database logics
-const Subscriber = require('../Models/Newslettter'); // Database for Newsletter
-const Controller = require('../Controllers/Controllers'); //contrilers functions for the routers
+const  ArticleModel = require('../Models/Database'); //Database logic
+const Subscriber = require('../Models/Newsletter'); // Database for Newsletter
+const Controller = require('../Controllers/Controllers'); //controller functions for the routers
 const { Router } = require("express")
 
 const Validate = require('../Controllers/Validate');
-
-
 
 route.get("/articles", Controller.indexPage)
 
